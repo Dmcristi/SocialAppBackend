@@ -61,7 +61,6 @@ public class User {
         this.postsList = postsList;
     }
 
-
     @Override
     public String toString() {
         return "\nUser{" +

@@ -32,5 +32,4 @@ public class DatabaseConnector {
         }
         return this.connection;
     }
-
 }

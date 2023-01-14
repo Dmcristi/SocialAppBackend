@@ -13,7 +13,6 @@ public class Main {
     static LikeService likeService = new LikeService();
     static CommentService commentService = new CommentService();
 
-
     public static void main(String[] args) {
         while (true) {
 

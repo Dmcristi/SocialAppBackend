@@ -13,7 +13,6 @@ public class Post {
     private ArrayList<Integer> likes = new ArrayList<>();
     private ArrayList<Comment> comments = new ArrayList<>();
 
-
     public Post() {
     }
 
