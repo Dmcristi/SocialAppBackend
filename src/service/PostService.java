@@ -1,5 +1,6 @@
 package service;
 
+import entity.Comment;
 import entity.Post;
 import entity.User;
 import repository.CommentRepository;
@@ -8,6 +9,7 @@ import repository.PostRepository;
 import repository.UserRepository;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -90,6 +92,14 @@ public class PostService {
         int postId = intScanner.nextInt();
         Post post = postRepository.readById(postId);
         if (post != null) {
+            ArrayList<Comment> comments = commentRepository.getPostComments(postId);
+            ArrayList<Integer> likes = likeRepository.getPostLikes(postId);
+            for (Comment comment: comments) {
+                commentRepository.deleteByCommentId(comment.getId());
+            }
+            for (Integer like: likes) {
+                likeRepository.delete(like, postId);
+            }
             postRepository.deleteByPostId(postId);
         } else {
             System.out.println("Invalid post id: " + postId);

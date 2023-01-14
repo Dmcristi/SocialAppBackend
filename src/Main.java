@@ -18,7 +18,7 @@ public class Main {
 
             System.out.println("Choose the flow(user/post/like/comment/quit): ");
             String flowInput = stringScanner.nextLine();
-            switch (flowInput) {
+            switch (flowInput.toLowerCase()) {
                 case "user":
                     startUserFlow();
                     break;
@@ -32,6 +32,7 @@ public class Main {
                     startCommentFlow();
                     break;
                 case "quit":
+                case "q":
                     return;
                 default:
                     System.out.println("Invalid flow!");
@@ -42,9 +43,9 @@ public class Main {
 
     public static void startUserFlow() {
         while (true) {
-            System.out.println("\n\nRead all users - RA/Read by user id - RBI/Create user - C\nUpdate user - U/Delete user - D/Exit flow - Q");
+            System.out.println("\n\nCreate user - C/Read all users - RA/Read by user id - RBI\nUpdate user - U/Delete user - D/Exit flow - Q");
             String operationInput = chooseCrudOperation("RA/RBI/C/U/D/Q");
-            switch (operationInput) {
+            switch (operationInput.toUpperCase()) {
                 case "RA":
                     userService.readAll();
                     break;
@@ -69,10 +70,10 @@ public class Main {
     }
 
     public static void startPostFlow() {
-        System.out.println("\n\n Read all posts - RA/Read post by user id- RBUI/Create post - C\nUpdate post -U/Delete post - D/Quit - Q");
+        System.out.println("\n\nCreate post - C/Read all posts - RA/Read post by user id- RBUI\nUpdate post -U/Delete post - D/Quit - Q");
         String operationInput = chooseCrudOperation("RA/RBUI/C/U/D/Q");
 
-        switch (operationInput) {
+        switch (operationInput.toUpperCase()) {
             case "RA":
                 postService.readAll();
                 break;
@@ -97,7 +98,7 @@ public class Main {
 
     private static void startLikeFlow() {
         String operationInput = chooseCrudOperation("C/D/Q");
-        switch (operationInput) {
+        switch (operationInput.toUpperCase()) {
             case "C":
                 likeService.create();
                 break;
@@ -114,7 +115,7 @@ public class Main {
 
     private static void startCommentFlow() {
         String operationInput = chooseCrudOperation("C/U/D/Q");
-        switch (operationInput) {
+        switch (operationInput.toUpperCase()) {
             case "C":
                 commentService.create();
                 break;

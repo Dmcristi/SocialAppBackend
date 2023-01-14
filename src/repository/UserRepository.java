@@ -54,16 +54,15 @@ public class UserRepository {
         try {
             Statement readStatement = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = readStatement.executeQuery("SELECT * FROM user_table WHERE id = " + userId);
-            rs.next();
-            return new User(
-                    rs.getInt("id"),
-                    rs.getString("nume"),
-                    rs.getString("email"),
-                    rs.getInt("varsta")
-            );
+            if (rs.next()) {
+                return new User(
+                        rs.getInt("id"),
+                        rs.getString("nume"),
+                        rs.getString("email"),
+                        rs.getInt("varsta")
+                );
+            }
         } catch (SQLException e) {
-
-//            throw new UserException("Invalid usasdnasdhagsdhagsjder id: " + userId);
             System.out.println("Invalid query");
             e.printStackTrace();
         }

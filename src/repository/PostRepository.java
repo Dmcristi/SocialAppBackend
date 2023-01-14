@@ -87,8 +87,8 @@ public class PostRepository {
     }
 
     public ArrayList<Post> readByUserId(int userId) {
-        ArrayList<Post> postList = new ArrayList<>();
         Connection connection = DatabaseConnector.getInstance().getConnection();
+        ArrayList<Post> postList = new ArrayList<>();
 
         try {
             Statement readStatement = connection.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);

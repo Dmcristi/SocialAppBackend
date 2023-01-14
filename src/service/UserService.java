@@ -36,7 +36,6 @@ public class UserService {
         if (!users.isEmpty()) {
             for (User user : users) {
                 user.setPostsList(postRepository.readByUserId(user.getId()));
-                //modificare
                 for (Post post : user.getPostsList()) {
                     post.setLikes(likeRepository.getPostLikes(post.getId()));
                     post.setComments(commentRepository.getPostComments(post.getId()));
@@ -76,7 +75,6 @@ public class UserService {
         user.setNume(returnValueIfModified("nume", user));
         user.setEmail(returnValueIfModified("email", user));
         user.setVarsta(Integer.parseInt(returnValueIfModified("varsta", user)));
-
         userRepository.update(user);
     }
 
@@ -87,7 +85,6 @@ public class UserService {
         if (userRepository.readById(userId) == null) {
             System.out.println("Invalid user id: " + userId);
         } else {
-            ///
             ArrayList<Post> posts = postRepository.readByUserId(userId);
             for (Post post : posts) {
                 postRepository.deleteByPostId(post.getId());
@@ -98,8 +95,8 @@ public class UserService {
 
     public String returnValueIfModified(String columnName, User user) {
         System.out.println("Edit " + columnName + "?Y/N: ");
-        String raspuns = stringScanner.nextLine();
-        if (raspuns.equalsIgnoreCase("y")) {
+        String response = stringScanner.nextLine();
+        if (response.equalsIgnoreCase("y")) {
             System.out.println("Enter " + columnName);
             return stringScanner.nextLine();
         } else {
