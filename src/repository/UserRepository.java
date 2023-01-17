@@ -2,7 +2,6 @@ package repository;
 
 import database.config.DatabaseConnector;
 import entity.User;
-import exceptions.UserException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
