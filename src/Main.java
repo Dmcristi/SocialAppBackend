@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class Main {
 //    new comment just for testing purposes
+//    new comment just for testing purposes
 
     static Scanner stringScanner = new Scanner(System.in);
     static UserService userService = new UserService();
